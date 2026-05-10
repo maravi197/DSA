@@ -33,7 +33,7 @@
       "#define ss second",
       "#define Int long long",
       "#define sz(x) (int)(x.size())",
-      "#define Endl '\\n'",
+      "#define endL '\\n'",
       "using ll = long long;",
       "#define PI 3.141592653589793238462643383279502884",
       "const ll inf = 0x3f3f3f3f3f3f3f3fLL;",
