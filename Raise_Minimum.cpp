@@ -1,8 +1,9 @@
 /**
  *    author:  Vermax
- *    created: 09.05.2026 21:26:15
+ *    created: 10.05.2026 18:54:01
  **/
 #include <bits/stdc++.h>
+#include "Templates/debu.cpp"
 using namespace std;
 #define bset(x) __builtin_popcount(x)
 #define bsetl(x) __builtin_popcountll(x)
@@ -40,29 +41,50 @@ using ll = long long;
 const int MOD = 1e9 + 7;
 const int N = 1e5 + 5;
 
+void Solve()
+{ 
+  int n,k;cin>>n>>k;
+   vector<int>a[n];
+   vector<int>rem;
+   for(int i=0;i<n;i++){
+       int c;cin>>c;
+       rem.pb(c);
+       for(int j=0;j<c;j++){
+        int x;cin>>x;
+        a[i].pb(x);
+       }
+   }
+   vector<int>c;
+   for(int i=0;i<n;i++){
+    int y;cin>>y;
+    c.pb(y);
+   }
+   int id=0;
+   int tp=0;
+   int kk=k;
+   while(true){
+      tp+=c[id]*rem[id];
+      
+      if(tp>=k)break;
+      kk-=c[id]*rem[id];
+      id++;
+   }
+   
+   cout<<a[id][(kk-1)%rem[id]];
+    
+}
 
 int32_t main()
 {
   ios_base::sync_with_stdio(false);
   cin.tie(nullptr);
 
-  int n,k;cin>>n>>k;
-  vector<int>a(n);scan(a);
-  int left=0;
-  int right=3*1e18;
-  while(abs(left-right)>1){
-       int mid=left+right>>1;
-       int sum=0;
-       for(int i=0;i<n;i++){
-        if(a[i]<mid){
-            sum+=((mid-a[i]+i)/(i+1));
-        }
-        if(sum>k)break;
-       }
-       if(sum>k)right=mid;
-       else left=mid;
+  ll _ = 1;
+  cin >> _;
+  while (_--)
+  {
+    Solve();
   }
 
-   cout<<left;
   return 0;
 }
