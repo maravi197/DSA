@@ -3,7 +3,7 @@
  *    created: 09.05.2026 20:40:15
  **/
 #include <bits/stdc++.h>
-#include "Templates/debu.cpp"
+//#include "Templates/debu.cpp"
 using namespace std;
 #define bset(x) __builtin_popcount(x)
 #define bsetl(x) __builtin_popcountll(x)
@@ -68,7 +68,7 @@ int32_t main()
     int y;cin>>y;
     c.pb(y);
    }
-   debug(c);
+   //debug(c);
    int id=0;
    int tp=0;
    int kk=k;

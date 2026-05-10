@@ -1,0 +1,145 @@
+/**
+ * author:  Vermax
+ * created: 10.05.2026 19:38:00
+ **/
+#include <bits/stdc++.h>
+using namespace std;
+
+#define bset(x) __builtin_popcount(x)
+#define bsetl(x) __builtin_popcountll(x)
+#define pos(x) __builtin_ctz(x)
+#define pb push_back
+#define pob pop_back
+#define mp make_pair
+#define scan(v) for (auto &i : v) cin >> i
+#define srt(v) sort(v.begin(), v.end())
+#define ma(v) *max_element(v.begin(), v.end())
+#define mi(v) *min_element(v.begin(), v.end())
+#define srtg(v) sort(v.begin(), v.end(), greater<>())
+#define vi(i, n) for (ll i = 0; i < n; i++)
+#define vii(i, n) for (ll i = 1; i < n; i++)
+#define viii(i, n) for (ll i = 1; i <= n; i++)
+#define all(v) v.begin(), v.end()
+#define suma(a) accumulate(all(a), 0LL)
+#define yes cout << "YES" <<'\n'
+#define no cout << "NO" << '\n'
+#define lcm(a, b) (a / __gcd(a, b) * b)
+#define printv(v) for (ll i = 0; i < v.size(); i++) cout << v[i] << ' '; cout << endl;
+#define ff first
+#define ss second
+#define Int long long
+#define sz(x) (int)(x.size())
+#define Endl '\n'
+using ll = long long;
+#define PI 3.141592653589793238462643383279502884
+#define inf 0x3f3f3f3f
+const int MOD = 1e9 + 7;
+const int N = 1e5 + 5;
+
+#ifndef ONLINE_JUDGE
+namespace __DEBUG_UTIL__
+{
+    void print(const char *x) { cerr << x; }
+    void print(bool x) { cerr << (x ? "T" : "F"); }
+    void print(char x) { cerr << '\'' << x << '\''; }
+    void print(signed int x) { cerr << x; }
+    void print(unsigned int x) { cerr << x; }
+    void print(signed long long int x) { cerr << x; }
+    void print(unsigned long long int x) { cerr << x; }
+    void print(float x) { cerr << x; }
+    void print(double x) { cerr << x; }
+    void print(long double x) { cerr << x; }
+    void print(string x) { cerr << '\"' << x << '\"'; }
+    
+    template <size_t N> 
+    void print(bitset<N> x) { cerr << x; }
+    
+    void print(vector<bool> v) {
+        int f = 0; cerr << '{';
+        for (auto &&i : v) cerr << (f++ ? "," : "") << (i ? "T" : "F");
+        cerr << "}";
+    }
+    
+    template <typename T> void print(T &&x);
+    template <typename T> void print(vector<vector<T>> mat);
+    template <typename T, size_t N, size_t M> void print(T (&mat)[N][M]);
+    template <typename F, typename S> void print(pair<F, S> x);
+    template <typename T, size_t N> struct Tuple { 
+        static void printTuple(T t) { Tuple<T, N - 1>::printTuple(t); cerr << ","; print(get<N - 1>(t)); } 
+    };
+    template <typename T> struct Tuple<T, 1> { 
+        static void printTuple(T t) { print(get<0>(t)); } 
+    };
+    template <typename... Args> 
+    void print(tuple<Args...> t) { cerr << "("; Tuple<decltype(t), sizeof...(Args)>::printTuple(t); cerr << ")"; }
+    
+    template <typename T> 
+    void print(T &&x) { 
+        int f = 0; cerr << '{'; 
+        for (auto &&i : x) cerr << (f++ ? "," : ""), print(i); 
+        cerr << "}"; 
+    }
+    
+    template <typename T> 
+    void print(vector<vector<T>> mat) { 
+        int f = 0; cerr << "\n~~~~~\n"; 
+        for (auto &&i : mat) { cerr << setw(2) << left << f++, print(i), cerr << "\n"; } 
+        cerr << "~~~~~\n"; 
+    }
+    
+    template <typename T, size_t N, size_t M> 
+    void print(T (&mat)[N][M]) { 
+        int f = 0; cerr << "\n~~~~~\n"; 
+        for (auto &&i : mat) { cerr << setw(2) << left << f++, print(i), cerr << "\n"; } 
+        cerr << "~~~~~\n"; 
+    }
+    
+    template <typename F, typename S> 
+    void print(pair<F, S> x) { cerr << '('; print(x.first); cerr << ','; print(x.second); cerr << ')'; }
+    
+    void printer(const char *) {} 
+    template <typename T, typename... V> 
+    void printer(const char *names, T &&head, V &&...tail) {
+        int i = 0; 
+        for (size_t b = 0; names[i] != '\0' and (names[i] != ',' or b != 0); i++)
+            if (names[i] == '(' or names[i] == '<' or names[i] == '{') b++; 
+            else if (names[i] == ')' or names[i] == '>' or names[i] == '}') b--;
+        cerr.write(names, i) << " = "; print(head); 
+        if (sizeof...(tail)) cerr << " || ", printer(names + i + 1, tail...); 
+        else cerr << "]\n";
+    }
+    
+    template <typename T, typename... V> 
+    void printerArr(const char *names, T arr[], size_t N, V... tail) {
+        size_t ind = 0; for (; names[ind] and names[ind] != ','; ind++) cerr << names[ind];
+        for (ind++; names[ind] and names[ind] != ','; ind++);
+        cerr << " = {"; for (size_t i = 0; i < N; i++) cerr << (i ? "," : ""), print(arr[i]); cerr << "}";
+        if (sizeof...(tail)) cerr << " || ", printerArr(names + ind + 1, tail...); 
+        else cerr << "]\n";
+    }
+}
+#define debug(...) std::cerr << __LINE__ << ": [", __DEBUG_UTIL__::printer(#__VA_ARGS__, __VA_ARGS__)
+#define debugArr(...) std::cerr << __LINE__ << ": [", __DEBUG_UTIL__::printerArr(#__VA_ARGS__, __VA_ARGS__)
+#else
+#define debug(...)
+#define debugArr(...)
+#endif
+
+void Solve()
+{
+    
+}
+
+int32_t main()
+{
+    ios_base::sync_with_stdio(false);
+    cin.tie(nullptr);
+
+    int _ = 1;
+    cin >> _;
+    while (_--)
+    {
+        Solve();
+    }
+    return 0;
+}
